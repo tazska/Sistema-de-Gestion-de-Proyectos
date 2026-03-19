@@ -6,6 +6,7 @@ import { CargoModule } from './cargo/cargo.module';
 import { EmpleadoModule } from './empleado/empleado.module';
 import { ProyectoModule } from './proyecto/proyecto.module';
 import { TareaModule } from './tarea/tarea.module';
+import { CargoModule } from './cargo/cargo.module';
 
 @Module({
   imports: [
