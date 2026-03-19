@@ -7,6 +7,8 @@ import { EmpleadoModule } from './empleado/empleado.module';
 import { ProyectoModule } from './proyecto/proyecto.module';
 import { TareaModule } from './tarea/tarea.module';
 
+import { ProyectoModule } from './proyecto/proyecto.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
