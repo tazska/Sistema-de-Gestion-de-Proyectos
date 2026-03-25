@@ -13,7 +13,6 @@ export class AsignacionService {
   ) {}
 
   async create(dto: CreateAsignacionDto) {
-    // ⭐ Regla: máximo 3 proyectos por empleado
     const count = await this.repo.count({
       where: { empleado: { id_empleado: dto.id_empleado } },
     });
@@ -24,7 +23,6 @@ export class AsignacionService {
       );
     }
 
-    // Verificar si ya existe esa asignación
     const existe = await this.repo.findOne({
       where: {
         empleado: { id_empleado: dto.id_empleado },
@@ -60,7 +58,6 @@ export class AsignacionService {
     });
   }
 
-  // Ver todos los proyectos de un empleado
   findByEmpleado(id_empleado: number) {
     return this.repo.find({
       where: { empleado: { id_empleado } },
@@ -68,7 +65,6 @@ export class AsignacionService {
     });
   }
 
-  // Ver todos los empleados de un proyecto
   findByProyecto(id_proyecto: number) {
     return this.repo.find({
       where: { proyecto: { id_proyecto } },

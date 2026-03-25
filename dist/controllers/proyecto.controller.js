@@ -16,6 +16,7 @@ exports.ProyectoController = void 0;
 const common_1 = require("@nestjs/common");
 const proyecto_service_1 = require("../services/proyecto.service");
 const create_proyecto_dto_1 = require("../dto/create-proyecto.dto");
+const update_proyecto_dto_1 = require("../dto/update-proyecto.dto");
 let ProyectoController = class ProyectoController {
     service;
     constructor(service) {
@@ -63,7 +64,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, update_proyecto_dto_1.UpdateProyectoDto]),
     __metadata("design:returntype", void 0)
 ], ProyectoController.prototype, "update", null);
 __decorate([

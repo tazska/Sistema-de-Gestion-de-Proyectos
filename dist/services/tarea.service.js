@@ -31,29 +31,15 @@ let TareaService = class TareaService {
         return this.repo.save(tarea);
     }
     findAll() {
-        return this.repo.find({ relations: ['proyecto', 'empleado', 'empleado.cargo'] });
+        return this.repo.find({
+            relations: ['proyecto', 'empleado', 'empleado.cargo'],
+        });
     }
     findOne(id) {
         return this.repo.findOne({
             where: { id_tarea: id },
-            relations: ['proyecto', 'empleado', 'empleado.cargo'],
+            relations: ['proyecto', 'empleado', 'empleado.cargo', 'seguimientos'],
         });
-    }
-    async getCostoProyecto(id_proyecto) {
-        const tareas = await this.repo.find({
-            where: { proyecto: { id_proyecto } },
-            relations: ['empleado', 'empleado.cargo'],
-        });
-        const detalle = tareas.map((t) => ({
-            tarea: t.titulo,
-            empleado: t.empleado?.nombre,
-            cargo: t.empleado?.cargo?.nombre,
-            horas_reales: t.horas_reales ?? 0,
-            valor_hora: Number(t.empleado?.cargo?.valor_hora ?? 0),
-            costo: (t.horas_reales ?? 0) * Number(t.empleado?.cargo?.valor_hora ?? 0),
-        }));
-        const costo_total = detalle.reduce((acc, d) => acc + d.costo, 0);
-        return { id_proyecto, costo_total, detalle };
     }
     async update(id, dto) {
         await this.repo.update(id, dto);

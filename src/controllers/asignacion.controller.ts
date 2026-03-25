@@ -17,7 +17,6 @@ export class AsignacionController {
     return this.service.findAll();
   }
 
-  // ⚠️ Estos dos van antes de :id
   @Get('empleado/:id')
   findByEmpleado(@Param('id') id: string) {
     return this.service.findByEmpleado(+id);

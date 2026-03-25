@@ -11,10 +11,11 @@ const common_1 = require("@nestjs/common");
 const config_1 = require("@nestjs/config");
 const database_module_1 = require("./database/database.module");
 const departamento_module_1 = require("./modules/departamento.module");
-const cargo_module_1 = require("./modules/cargo.module");
 const empleado_module_1 = require("./modules/empleado.module");
 const proyecto_module_1 = require("./modules/proyecto.module");
 const tarea_module_1 = require("./modules/tarea.module");
+const asignacion_module_1 = require("./modules/asignacion.module");
+const seguimiento_module_1 = require("./modules/seguimiento.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -23,9 +24,10 @@ exports.AppModule = AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot({ isGlobal: true }),
             database_module_1.DatabaseModule,
+            seguimiento_module_1.SeguimientoModule,
             departamento_module_1.DepartamentoModule,
-            cargo_module_1.CargoModule,
             empleado_module_1.EmpleadoModule,
+            asignacion_module_1.AsignacionModule,
             proyecto_module_1.ProyectoModule,
             tarea_module_1.TareaModule,
         ],
