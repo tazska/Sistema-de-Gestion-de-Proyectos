@@ -6,7 +6,6 @@ import { EmpleadoModule } from './modules/empleado.module';
 import { ProyectoModule } from './modules/proyecto.module';
 import { TareaModule } from './modules/tarea.module';
 import { AsignacionModule } from './modules/asignacion.module';
-import { Seguimiento } from './entities/seguimiento.entity';
 import { SeguimientoModule } from './modules/seguimiento.module';
 
 @Module({
