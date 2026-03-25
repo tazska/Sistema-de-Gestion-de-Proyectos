@@ -16,19 +16,27 @@ exports.TareaController = void 0;
 const common_1 = require("@nestjs/common");
 const tarea_service_1 = require("../services/tarea.service");
 const create_tarea_dto_1 = require("../dto/create-tarea.dto");
+const update_tarea_dto_1 = require("../dto/update-tarea.dto");
 let TareaController = class TareaController {
     service;
     constructor(service) {
         this.service = service;
     }
-    create(dto) { return this.service.create(dto); }
-    findAll() { return this.service.findAll(); }
-    getCosto(id) { return this.service.getCostoProyecto(+id); }
-    findOne(id) { return this.service.findOne(+id); }
+    create(dto) {
+        return this.service.create(dto);
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findOne(id) {
+        return this.service.findOne(+id);
+    }
     update(id, dto) {
         return this.service.update(+id, dto);
     }
-    remove(id) { return this.service.remove(+id); }
+    remove(id) {
+        return this.service.remove(+id);
+    }
 };
 exports.TareaController = TareaController;
 __decorate([
@@ -45,13 +53,6 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], TareaController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)('proyecto/:id/costo'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], TareaController.prototype, "getCosto", null);
-__decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -63,7 +64,7 @@ __decorate([
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, update_tarea_dto_1.UpdateTareaDto]),
     __metadata("design:returntype", void 0)
 ], TareaController.prototype, "update", null);
 __decorate([

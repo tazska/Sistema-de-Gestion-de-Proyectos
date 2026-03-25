@@ -6,21 +6,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CargoModule = void 0;
+exports.AsignacionModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const cargo_entity_1 = require("../entities/cargo.entity");
-const cargo_service_1 = require("../services/cargo.service");
-const cargo_controller_1 = require("../controllers/cargo.controller");
-let CargoModule = class CargoModule {
+const asignacion_entity_1 = require("../entities/asignacion.entity");
+const asignacion_service_1 = require("../services/asignacion.service");
+const asignacion_controller_1 = require("../controllers/asignacion.controller");
+let AsignacionModule = class AsignacionModule {
 };
-exports.CargoModule = CargoModule;
-exports.CargoModule = CargoModule = __decorate([
+exports.AsignacionModule = AsignacionModule;
+exports.AsignacionModule = AsignacionModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([cargo_entity_1.Cargo])],
-        providers: [cargo_service_1.CargoService],
-        controllers: [cargo_controller_1.CargoController],
-        exports: [cargo_service_1.CargoService],
+        imports: [typeorm_1.TypeOrmModule.forFeature([asignacion_entity_1.Asignacion])],
+        providers: [asignacion_service_1.AsignacionService],
+        controllers: [asignacion_controller_1.AsignacionController],
+        exports: [asignacion_service_1.AsignacionService],
     })
-], CargoModule);
-//# sourceMappingURL=cargo.module.js.map
+], AsignacionModule);
+//# sourceMappingURL=asignacion.module.js.map

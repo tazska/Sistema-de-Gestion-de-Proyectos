@@ -12,61 +12,90 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CargoController = void 0;
+exports.AsignacionController = void 0;
 const common_1 = require("@nestjs/common");
-const cargo_service_1 = require("../services/cargo.service");
-const create_cargo_dto_1 = require("../dto/create-cargo.dto");
-let CargoController = class CargoController {
+const asignacion_service_1 = require("../services/asignacion.service");
+const create_asignacion_dto_1 = require("../dto/create-asignacion.dto");
+const update_asignacion_dto_1 = require("../dto/update-asignacion.dto");
+let AsignacionController = class AsignacionController {
     service;
     constructor(service) {
         this.service = service;
     }
-    create(dto) { return this.service.create(dto); }
-    findAll() { return this.service.findAll(); }
-    findOne(id) { return this.service.findOne(+id); }
+    create(dto) {
+        return this.service.create(dto);
+    }
+    findAll() {
+        return this.service.findAll();
+    }
+    findByEmpleado(id) {
+        return this.service.findByEmpleado(+id);
+    }
+    findByProyecto(id) {
+        return this.service.findByProyecto(+id);
+    }
+    findOne(id) {
+        return this.service.findOne(+id);
+    }
     update(id, dto) {
         return this.service.update(+id, dto);
     }
-    remove(id) { return this.service.remove(+id); }
+    remove(id) {
+        return this.service.remove(+id);
+    }
 };
-exports.CargoController = CargoController;
+exports.AsignacionController = AsignacionController;
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_cargo_dto_1.CreateCargoDto]),
+    __metadata("design:paramtypes", [create_asignacion_dto_1.CreateAsignacionDto]),
     __metadata("design:returntype", void 0)
-], CargoController.prototype, "create", null);
+], AsignacionController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], CargoController.prototype, "findAll", null);
+], AsignacionController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('empleado/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AsignacionController.prototype, "findByEmpleado", null);
+__decorate([
+    (0, common_1.Get)('proyecto/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], AsignacionController.prototype, "findByProyecto", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], CargoController.prototype, "findOne", null);
+], AsignacionController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [String, update_asignacion_dto_1.UpdateAsignacionDto]),
     __metadata("design:returntype", void 0)
-], CargoController.prototype, "update", null);
+], AsignacionController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], CargoController.prototype, "remove", null);
-exports.CargoController = CargoController = __decorate([
-    (0, common_1.Controller)('cargos'),
-    __metadata("design:paramtypes", [cargo_service_1.CargoService])
-], CargoController);
-//# sourceMappingURL=cargo.controller.js.map
+], AsignacionController.prototype, "remove", null);
+exports.AsignacionController = AsignacionController = __decorate([
+    (0, common_1.Controller)('asignaciones'),
+    __metadata("design:paramtypes", [asignacion_service_1.AsignacionService])
+], AsignacionController);
+//# sourceMappingURL=asignacion.controller.js.map
