@@ -1,4 +1,3 @@
-// src/proyecto/dto/create-proyecto.dto.ts
 import { IsString, IsOptional, IsDateString, IsNumber } from 'class-validator';
 
 export class CreateProyectoDto {

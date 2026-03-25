@@ -1,4 +1,3 @@
-// src/tarea/tarea.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Tarea } from '../entities/tarea.entity';

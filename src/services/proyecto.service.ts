@@ -1,16 +1,16 @@
-// src/proyecto/proyecto.service.ts
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Proyecto } from '../entities/proyecto.entity';
 import { CreateProyectoDto } from '../dto/create-proyecto.dto';
+import { UpdateProyectoDto } from '../dto/update-proyecto.dto';
 
 @Injectable()
 export class ProyectoService {
   constructor(
     @InjectRepository(Proyecto)
     private readonly repo: Repository<Proyecto>,
-  ) {}
+  ) { }
 
   create(dto: CreateProyectoDto) {
     const proyecto = this.repo.create({
@@ -31,7 +31,7 @@ export class ProyectoService {
     });
   }
 
-  async update(id: number, dto: Partial<CreateProyectoDto>) {
+  async update(id: number, dto: UpdateProyectoDto) {
     await this.repo.update(id, dto);
     return this.findOne(id);
   }
