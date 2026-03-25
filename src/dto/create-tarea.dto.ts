@@ -1,4 +1,3 @@
-// src/tarea/dto/create-tarea.dto.ts
 import { IsString, IsOptional, IsNumber, IsPositive } from 'class-validator';
 
 export class CreateTareaDto {
@@ -11,17 +10,12 @@ export class CreateTareaDto {
 
   @IsOptional()
   @IsString()
-  estado?: string; // pendiente | en_progreso | completada
+  estado?: string;
 
   @IsOptional()
   @IsNumber()
   @IsPositive()
-  horas_estimadas?: number;
-
-  @IsOptional()
-  @IsNumber()
-  @IsPositive()
-  horas_reales?: number;
+  horas_estimadas?: number; 
 
   @IsNumber()
   id_proyecto: number;

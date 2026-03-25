@@ -1,4 +1,3 @@
-// src/empleado/dto/create-empleado.dto.ts
 import { IsString, IsEmail, IsNumber } from 'class-validator';
 
 export class CreateEmpleadoDto {

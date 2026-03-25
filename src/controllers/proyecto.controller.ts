@@ -1,11 +1,11 @@
-// src/proyecto/proyecto.controller.ts
 import { Controller, Get, Post, Patch, Delete, Body, Param } from '@nestjs/common';
 import { ProyectoService } from '../services/proyecto.service';
 import { CreateProyectoDto } from '../dto/create-proyecto.dto';
+import { UpdateProyectoDto } from '../dto/update-proyecto.dto';
 
 @Controller('proyectos')
 export class ProyectoController {
-  constructor(private readonly service: ProyectoService) {}
+  constructor(private readonly service: ProyectoService) { }
 
   @Post()
   create(@Body() dto: CreateProyectoDto) {
@@ -23,7 +23,7 @@ export class ProyectoController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() dto: Partial<CreateProyectoDto>) {
+  update(@Param('id') id: string, @Body() dto: UpdateProyectoDto) {
     return this.service.update(+id, dto);
   }
 

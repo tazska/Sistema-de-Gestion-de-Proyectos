@@ -1,7 +1,7 @@
-// src/tarea/tarea.entity.ts
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Proyecto } from '../entities/proyecto.entity';
 import { Empleado } from '../entities/empleado.entity';
+import { Seguimiento } from '../entities/seguimiento.entity';
 
 @Entity()
 export class Tarea {
@@ -15,13 +15,10 @@ export class Tarea {
   descripcion: string;
 
   @Column({ default: 'pendiente' })
-  estado: string; // pendiente | en_progreso | completada
+  estado: string;
 
   @Column({ nullable: true })
-  horas_estimadas: number;
-
-  @Column({ nullable: true })
-  horas_reales: number;
+  horas_estimadas: number;  
 
   @ManyToOne(() => Proyecto, (p) => p.tareas)
   @JoinColumn({ name: 'id_proyecto' })
@@ -30,4 +27,8 @@ export class Tarea {
   @ManyToOne(() => Empleado, (e) => e.tareas)
   @JoinColumn({ name: 'id_empleado' })
   empleado: Empleado;
+
+  @OneToMany(() => Seguimiento, (s) => s.tarea)
+  seguimientos: Seguimiento[];
 }
+  

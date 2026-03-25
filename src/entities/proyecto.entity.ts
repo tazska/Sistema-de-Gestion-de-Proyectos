@@ -1,4 +1,3 @@
-// src/proyecto/proyecto.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Departamento } from '../entities/departamento.entity';
 import { Tarea } from '../entities/tarea.entity';
