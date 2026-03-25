@@ -16,8 +16,7 @@ export class SeguimientoController {
   findAll() {
     return this.service.findAll();
   }
-
-  // ⭐ debe ir antes de :id
+  
   @Get('proyecto/:id/costo')
   getCostoProyecto(@Param('id') id: string) {
     return this.service.getCostoProyecto(+id);

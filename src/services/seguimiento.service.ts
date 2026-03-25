@@ -43,7 +43,6 @@ export class SeguimientoService {
     return this.repo.delete(id);
   }
 
-  // ⭐ Costo total del proyecto
   async getCostoProyecto(id_proyecto: number) {
     const seguimientos = await this.repo.find({
       where: { tarea: { proyecto: { id_proyecto } } },
@@ -74,7 +73,6 @@ export class SeguimientoService {
       };
     });
 
-    // Resumen por empleado
     const por_empleado = detalle.reduce((acc, d) => {
       const key = d.empleado;
       if (!acc[key]) {
