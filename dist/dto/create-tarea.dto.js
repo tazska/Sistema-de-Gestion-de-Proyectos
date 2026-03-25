@@ -16,7 +16,6 @@ class CreateTareaDto {
     descripcion;
     estado;
     horas_estimadas;
-    horas_reales;
     id_proyecto;
     id_empleado;
 }
@@ -41,12 +40,6 @@ __decorate([
     (0, class_validator_1.IsPositive)(),
     __metadata("design:type", Number)
 ], CreateTareaDto.prototype, "horas_estimadas", void 0);
-__decorate([
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.IsPositive)(),
-    __metadata("design:type", Number)
-], CreateTareaDto.prototype, "horas_reales", void 0);
 __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)

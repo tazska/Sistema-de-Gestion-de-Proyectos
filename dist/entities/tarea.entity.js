@@ -13,15 +13,16 @@ exports.Tarea = void 0;
 const typeorm_1 = require("typeorm");
 const proyecto_entity_1 = require("../entities/proyecto.entity");
 const empleado_entity_1 = require("../entities/empleado.entity");
+const seguimiento_entity_1 = require("../entities/seguimiento.entity");
 let Tarea = class Tarea {
     id_tarea;
     titulo;
     descripcion;
     estado;
     horas_estimadas;
-    horas_reales;
     proyecto;
     empleado;
+    seguimientos;
 };
 exports.Tarea = Tarea;
 __decorate([
@@ -45,10 +46,6 @@ __decorate([
     __metadata("design:type", Number)
 ], Tarea.prototype, "horas_estimadas", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ nullable: true }),
-    __metadata("design:type", Number)
-], Tarea.prototype, "horas_reales", void 0);
-__decorate([
     (0, typeorm_1.ManyToOne)(() => proyecto_entity_1.Proyecto, (p) => p.tareas),
     (0, typeorm_1.JoinColumn)({ name: 'id_proyecto' }),
     __metadata("design:type", proyecto_entity_1.Proyecto)
@@ -58,6 +55,10 @@ __decorate([
     (0, typeorm_1.JoinColumn)({ name: 'id_empleado' }),
     __metadata("design:type", empleado_entity_1.Empleado)
 ], Tarea.prototype, "empleado", void 0);
+__decorate([
+    (0, typeorm_1.OneToMany)(() => seguimiento_entity_1.Seguimiento, (s) => s.tarea),
+    __metadata("design:type", Array)
+], Tarea.prototype, "seguimientos", void 0);
 exports.Tarea = Tarea = __decorate([
     (0, typeorm_1.Entity)()
 ], Tarea);

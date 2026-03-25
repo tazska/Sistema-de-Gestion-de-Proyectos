@@ -17,41 +17,64 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const empleado_entity_1 = require("../entities/empleado.entity");
+const cargo_entity_1 = require("../entities/cargo.entity");
 let EmpleadoService = class EmpleadoService {
-    repo;
-    constructor(repo) {
-        this.repo = repo;
+    empleadoRepo;
+    cargoRepo;
+    constructor(empleadoRepo, cargoRepo) {
+        this.empleadoRepo = empleadoRepo;
+        this.cargoRepo = cargoRepo;
+    }
+    createCargo(dto) {
+        return this.cargoRepo.save(this.cargoRepo.create(dto));
+    }
+    findAllCargos() {
+        return this.cargoRepo.find();
+    }
+    findOneCargo(id) {
+        return this.cargoRepo.findOne({ where: { id_cargo: id } });
+    }
+    async updateCargo(id, dto) {
+        await this.cargoRepo.update(id, dto);
+        return this.findOneCargo(id);
+    }
+    removeCargo(id) {
+        return this.cargoRepo.delete(id);
     }
     create(dto) {
-        const empleado = this.repo.create({
+        const empleado = this.empleadoRepo.create({
             nombre: dto.nombre,
             email: dto.email,
             departamento: { id_departamento: dto.id_departamento },
             cargo: { id_cargo: dto.id_cargo },
         });
-        return this.repo.save(empleado);
+        return this.empleadoRepo.save(empleado);
     }
     findAll() {
-        return this.repo.find({ relations: ['departamento', 'cargo'] });
+        return this.empleadoRepo.find({
+            relations: ['departamento', 'cargo'],
+        });
     }
     findOne(id) {
-        return this.repo.findOne({
+        return this.empleadoRepo.findOne({
             where: { id_empleado: id },
             relations: ['departamento', 'cargo'],
         });
     }
     async update(id, dto) {
-        await this.repo.update(id, dto);
+        await this.empleadoRepo.update(id, dto);
         return this.findOne(id);
     }
     remove(id) {
-        return this.repo.delete(id);
+        return this.empleadoRepo.delete(id);
     }
 };
 exports.EmpleadoService = EmpleadoService;
 exports.EmpleadoService = EmpleadoService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(empleado_entity_1.Empleado)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, (0, typeorm_1.InjectRepository)(cargo_entity_1.Cargo)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], EmpleadoService);
 //# sourceMappingURL=empleado.service.js.map

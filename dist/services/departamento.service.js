@@ -31,6 +31,13 @@ let DepartamentoService = class DepartamentoService {
     findOne(id) {
         return this.repo.findOne({ where: { id_departamento: id } });
     }
+    async update(id, dto) {
+        await this.repo.update(id, dto);
+        return this.findOne(id);
+    }
+    remove(id) {
+        return this.repo.delete(id);
+    }
     findEmpleados(id) {
         return this.repo.findOne({
             where: { id_departamento: id },
